@@ -1,9 +1,12 @@
+
 class Person < ActiveRecord::Base
 
-	self.parse_and_add_csv file do 
-		CSV.read(file, headers: true).each do |p|
-			q = Person.create!(name: p.informal_name, formal: p.formal_name)
-			q.dom.create!(street1: p.street1, street2: p.street2, city: p.city, state: p.state, zip: p.zip)
+	def self.parse_and_add_csv file 
+		require 'CSV' 
+		CSV.read( file, headers: true).each do |p|
+			q = Person.create!(name: p["informal_name"], formal: p["formal_name"])
+			q.dom.create!(street1: p["street1"], street2: p["street2"], city: p["city"], state: p["state"], zip: p["zip"])
+		end
 	end
 
 	has_many :people_addresses
