@@ -13,6 +13,19 @@
 
 ActiveRecord::Schema.define(version: 20151209034040) do
 
+  create_table "current_people_addresses", id: false, force: :cascade do |t|
+    t.integer "person_id"
+    t.string  "name"
+    t.string  "formal"
+    t.integer "person_address_id"
+    t.integer "address_id"
+    t.string  "street1"
+    t.string  "street2"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
+  end
+
   create_table "domestic_addresses", force: :cascade do |t|
     t.string   "street1"
     t.string   "street2"
@@ -28,6 +41,16 @@ ActiveRecord::Schema.define(version: 20151209034040) do
     t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mailing_send_receives", id: false, force: :cascade do |t|
+    t.integer "mailing_id"
+    t.string  "type"
+    t.integer "year"
+    t.integer "person_id"
+    t.string  "formal"
+    t.boolean "sent"
+    t.boolean "received"
   end
 
   create_table "mailings", force: :cascade do |t|
@@ -56,7 +79,7 @@ ActiveRecord::Schema.define(version: 20151209034040) do
   end
 
   create_table "send_receives", force: :cascade do |t|
-    t.integer  "people_id"
+    t.integer  "person_id"
     t.boolean  "sent"
     t.boolean  "received"
     t.integer  "mailing_id"

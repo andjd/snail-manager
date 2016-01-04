@@ -19,6 +19,10 @@ class Person < ActiveRecord::Base
 
 	alias_method :intl, :international_addresses
 
+	has_many :send_receives, class_name: "SendReceive"
+
+	has_many :mailings, through: :send_receives, source: :mailing
+
 	def addresses
 		self.people_addresses.load.map(&:address)
 	end
