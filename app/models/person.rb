@@ -28,8 +28,6 @@ class Person < ActiveRecord::Base
 	end
 
 	def current_address
-		self.addresses.sort_by do |x|
-		   x.updated_at 
-		end.last
+		self.addresses.sort_by(&:updated_at).last
 	end
 end

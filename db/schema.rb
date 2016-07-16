@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209034040) do
+ActiveRecord::Schema.define(version: 20160105031339) do
 
   create_table "current_people_addresses", id: false, force: :cascade do |t|
     t.integer "person_id"
@@ -86,5 +86,18 @@ ActiveRecord::Schema.define(version: 20151209034040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "timeshares", force: :cascade do |t|
+    t.integer  "address_id"
+    t.string   "address_type"
+    t.date     "valid_from"
+    t.date     "valid_to"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "timeshares", ["address_id"], name: "index_timeshares_on_address_id"
+  add_index "timeshares", ["valid_from"], name: "index_timeshares_on_valid_from"
+  add_index "timeshares", ["valid_to"], name: "index_timeshares_on_valid_to"
 
 end

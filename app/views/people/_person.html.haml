@@ -1,0 +1,7 @@
+%h2= person.name
+- addr = person.current_address
+- if addr
+	%p= addr.street1
+	%p= addr.street2
+	%p= "#{addr.city}, #{addr.state} #{addr.zip}" 
+

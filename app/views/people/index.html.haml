@@ -1,0 +1,3 @@
+%h1= "Our People"
+- @people.each do |peep|
+	.person= render partial: "person", locals: {person: peep}
