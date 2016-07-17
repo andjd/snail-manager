@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,20 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105031339) do
-
-  create_table "current_people_addresses", id: false, force: :cascade do |t|
-    t.integer "person_id"
-    t.string  "name"
-    t.string  "formal"
-    t.integer "person_address_id"
-    t.integer "address_id"
-    t.string  "street1"
-    t.string  "street2"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zip"
-  end
+ActiveRecord::Schema.define(version: 20160717192544) do
 
   create_table "domestic_addresses", force: :cascade do |t|
     t.string   "street1"
@@ -43,21 +29,13 @@ ActiveRecord::Schema.define(version: 20160105031339) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mailing_send_receives", id: false, force: :cascade do |t|
-    t.integer "mailing_id"
-    t.string  "type"
-    t.integer "year"
-    t.integer "person_id"
-    t.string  "formal"
-    t.boolean "sent"
-    t.boolean "received"
-  end
-
   create_table "mailings", force: :cascade do |t|
     t.string   "type"
     t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date     "date"
+    t.index ["date"], name: "index_mailings_on_date"
   end
 
   create_table "people", force: :cascade do |t|
@@ -65,10 +43,9 @@ ActiveRecord::Schema.define(version: 20160105031339) do
     t.string   "formal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["formal"], name: "index_people_on_formal"
+    t.index ["name"], name: "index_people_on_name"
   end
-
-  add_index "people", ["formal"], name: "index_people_on_formal"
-  add_index "people", ["name"], name: "index_people_on_name"
 
   create_table "people_addresses", force: :cascade do |t|
     t.integer  "person_id"
@@ -94,10 +71,9 @@ ActiveRecord::Schema.define(version: 20160105031339) do
     t.date     "valid_to"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["address_id"], name: "index_timeshares_on_address_id"
+    t.index ["valid_from"], name: "index_timeshares_on_valid_from"
+    t.index ["valid_to"], name: "index_timeshares_on_valid_to"
   end
-
-  add_index "timeshares", ["address_id"], name: "index_timeshares_on_address_id"
-  add_index "timeshares", ["valid_from"], name: "index_timeshares_on_valid_from"
-  add_index "timeshares", ["valid_to"], name: "index_timeshares_on_valid_to"
 
 end
