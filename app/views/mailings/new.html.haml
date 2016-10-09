@@ -1,0 +1,20 @@
+%h1 Create New Mailing
+=form_for @mailing, class: "ui form" do |f|
+	.ui.form
+		.field
+			=f.label "Type"
+			=f.text_field :type, placeholder: "Holiday Letter"
+		.field
+			=f.label "Mailing Date"
+			=f.date_field :date, value: Time.now.strftime('%Y-%m-%d')
+		=f.label "Addressees"
+		=f.collection_check_boxes :recipiants, @people, :id, :formal do |p|
+			.ui.item
+				.ui.toggle.checkbox
+					=p.check_box(checked: true)
+					=p.label
+	=f.submit "Go ➼", class: "ui purple button"
+
+:javascript
+	$(function() {console.log($('select.dropdown'));
+		$('ui.checkbox').checkbox();})

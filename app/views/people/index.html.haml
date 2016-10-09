@@ -1,3 +1,4 @@
 %h1= "Our People"
 - @people.each do |peep|
+	.ui.list.relaxed
 	.person= render partial: "person", locals: {person: peep}

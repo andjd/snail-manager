@@ -1,8 +1,10 @@
 %h1 Our Mailing Organizer
 
-%button.ui.button{href: mailings_path(:"data-method" => :create)} New Mailing
+.ui.field
+	= button_to "New Mailing", "/mailings/new", method: :get, class: "ui purple button "
 
-= link_to "New Mailing", Mailing.new , method: :create, class: "ui button"
-
-- @mailings.each do |m|
-	=link_to "#{m.type}, #{m.year}", m
+.ui.list.relaxed.divided
+	- @mailings.each do |m|
+		.item
+			%i.ui.center.alligned.mail.icon
+			=link_to "#{m.type}, #{m.year}", m

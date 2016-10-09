@@ -1,7 +1,9 @@
-%h2= person.name
-- addr = person.current_address
-- if addr && addr.domestic?
-	%p= addr.street1
-	%p= addr.street2
-	%p= "#{addr.city}, #{addr.state} #{addr.zip}" 
-
+.ui.item
+	.ui.purple.segment
+		%h3.ui.purple.header= person.name
+		- addr = person.current_address
+		- if addr && addr.domestic?
+			.street-one= addr.street1
+			-if addr.street2
+				.street-two= addr.street2
+			.csz= "#{addr.city}, #{addr.state} #{addr.zip}" 
