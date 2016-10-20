@@ -2,8 +2,6 @@
 	.ui.purple.segment
 		%h3.ui.purple.header= person.name
 		- addr = person.current_address
-		- if addr && addr.domestic?
-			.street-one= addr.street1
-			-if addr.street2
-				.street-two= addr.street2
-			.csz= "#{addr.city}, #{addr.state} #{addr.zip}" 
+		-unless addr.nil?
+			-addr.as_lines.each do |line|
+				%p.address= line

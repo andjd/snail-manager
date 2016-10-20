@@ -3,6 +3,14 @@ class Mailing < ActiveRecord::Base
 		# overrides the default Single Table Inheritence behavior of Active Record
 	end
 
+	def year
+		return self.date.year
+	end
+
+	def formal?
+		return !!self.formal
+	end
+
 	has_many :send_receives, class_name: "SendReceive"
 
 

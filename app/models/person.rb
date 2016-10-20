@@ -28,6 +28,16 @@ class Person < ActiveRecord::Base
 	end
 
 	def current_address
-		self.addresses.sort_by(&:updated_at).last
+		 self.addresses.compact.sort_by(&:updated_at).last
+	end
+
+	def new_address params
+		if params[:international] != "1"
+			params[:dom].delete :id
+			return self.domestic_addresses.new(params[:dom])
+		else
+			params[:intl].delete :id
+			return self.international_addresses.new(params[:intl])
+		end
 	end
 end

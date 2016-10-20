@@ -5,6 +5,7 @@
 
 .ui.list.relaxed.divided
 	- @mailings.each do |m|
-		.item
-			%i.ui.center.alligned.mail.icon
-			=link_to "#{m.type}, #{m.year}", m
+		.ui.item
+			.ui.content
+				%i.ui.center.alligned.mail.icon
+				=link_to "#{m.type}, #{m.year}", m

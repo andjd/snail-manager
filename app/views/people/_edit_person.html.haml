@@ -1,0 +1,58 @@
+=form_for @person, class: "ui form" do |f|
+	.ui.field
+		=f.label "Casual Name"
+		=f.text_field :name
+
+	.ui.field
+		=f.label "Formal Name"
+		=f.text_field :formal
+	
+	-current = @person.current_address || DomesticAddress.new
+	=f.fields_for :new_address, current do |fa|
+		.ui.field
+			=f.label "Address"
+			%span domestic
+			%span.ui.toggle.checkbox.international
+				=fa.check_box :international?
+			%span international
+		-current_domestic = current.domestic? ? current : DomesticAddress.new
+		=fa.fields_for :dom,  current_domestic do |fad|
+			.domestic-address
+				=fad.hidden_field :id
+				.ui.field
+					=fad.label "Street1"
+					=fad.text_field :street1
+				.ui.field
+					=fad.label "Street2"
+					=fad.text_field :street2
+				.csz
+					.ui.field
+						=fad.label "City"
+						=fad.text_field :city
+					.ui.field
+						=fad.label "State"
+						=fad.text_field :state
+					.ui.field
+						=fad.label "Zip"
+						=fad.text_field :zip
+		-current_international = current.international? ? current : InternationalAddress.new
+		=fa.fields_for :intl,  current_international do |fai|
+			.international-address
+				=fai.hidden_field :id
+				.ui.field
+					=fai.text_area :lines
+	=f.submit "Go ➼", class: "ui purple button" 
+
+
+:javascript
+	function toggleInterntaional() {
+		$('.international-address').toggle(200)
+		$('.domestic-address').toggle(200)
+	}
+
+	$(function() {
+		console.log($('.ui.checkbox').length);
+		$('.ui.checkbox').checkbox();
+		$('.ui.checkbox.international').click(toggleInterntaional);
+		$('.international-address').toggle();
+		})

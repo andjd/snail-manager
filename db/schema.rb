@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717192544) do
+ActiveRecord::Schema.define(version: 20161020014457) do
 
   create_table "domestic_addresses", force: :cascade do |t|
     t.string   "street1"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160717192544) do
   end
 
   create_table "international_addresses", force: :cascade do |t|
-    t.string   "address"
+    t.string   "lines"
     t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20160717192544) do
 
   create_table "mailings", force: :cascade do |t|
     t.string   "type"
-    t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date     "date"
+    t.boolean  "formal"
     t.index ["date"], name: "index_mailings_on_date"
   end
 
