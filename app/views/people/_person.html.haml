@@ -5,3 +5,5 @@
 		-unless addr.nil?
 			-addr.as_lines.each do |line|
 				%p.address= line
+
+		=button_to  "Edit", edit_person_path(person), method: :get, class: "ui basic purple button "

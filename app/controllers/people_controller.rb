@@ -15,9 +15,9 @@ class PeopleController < ApplicationController
 		current_address = @person.current_address
 		new_address = @person.new_address(address_params[:new_address])
 		@person.addresses << new_address
+		@person.save!
 		new_address.save! 
-		@person.update
-		render :edit
+		redirect_to action: :index, anchor: "person_#{params[:id]}"
 	end
 
 	def create
@@ -26,7 +26,7 @@ class PeopleController < ApplicationController
 		@person.addresses << new_address
 		@person.save!
 		new_address.save!
-		render :edit
+		redirect_to action: :index, anchor: "person_#{params[:id]}"
 	end
 
 	def new
@@ -37,10 +37,10 @@ class PeopleController < ApplicationController
 	def people_params
 		params.require(:person).permit(:name, :formal)
 	end
+
 	def address_params
 		params.require(:person).permit(new_address: [
-			:international, dom: [:id, :street1, :street2, :city, :state, :zip], intl: [:id, :lines]
-		])
-			
+			:international, dom: [:id, :street1, :street2, :city, :state, :zip], intl: [:id, :lines, :country]
+		])	
 	end
 end 
