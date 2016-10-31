@@ -1,4 +1,6 @@
-%h1= "Our People"
+%h1 Our People
+.ui.field
+	= button_to "Add Person", new_person_path, method: :get, class: "ui purple button "
 - @people.each do |peep|
 	.ui.list.relaxed
 	.person[peep]= render partial: "person", locals: {person: peep}

@@ -26,7 +26,7 @@ class PeopleController < ApplicationController
 		@person.addresses << new_address
 		@person.save!
 		new_address.save!
-		redirect_to action: :index, anchor: "person_#{params[:id]}"
+		redirect_to action: :index, anchor: "person_#{@person.id}"
 	end
 
 	def new
