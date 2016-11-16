@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020014457) do
+ActiveRecord::Schema.define(version: 20161107014845) do
 
   create_table "domestic_addresses", force: :cascade do |t|
     t.string   "street1"
@@ -55,10 +55,15 @@ ActiveRecord::Schema.define(version: 20161020014457) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "send_receives", force: :cascade do |t|
+  create_table "receives", force: :cascade do |t|
     t.integer  "person_id"
-    t.boolean  "sent"
-    t.boolean  "received"
+    t.integer  "mailing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sends", force: :cascade do |t|
+    t.integer  "person_id"
     t.integer  "mailing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

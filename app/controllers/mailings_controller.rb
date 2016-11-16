@@ -10,6 +10,12 @@ class MailingsController < ApplicationController
 		render :show
 	end
 
+	def print
+		@mailing = Mailing.find params[:id]
+		render :print
+	end
+
+
 	def create
 		@mailing = Mailing.new mailing_params
 		if @mailing.save
@@ -24,6 +30,6 @@ class MailingsController < ApplicationController
 	end
 
 	def mailing_params
-		params.require(:mailing).permit(:id, :type, :date, :formal, recipiant_ids: [])
+		params.require(:mailing).permit(:id, :type, :date, :formal, recipient_ids: [])
 	end
 end#class

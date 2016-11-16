@@ -11,17 +11,10 @@ class Mailing < ActiveRecord::Base
 		return !!self.formal
 	end
 
-	has_many :send_receives, class_name: "SendReceive"
+	has_many :sends
+	has_many :recipients, through: :sends,  source: :person
 
-
-	has_many :recipiants, through: :send_receives, source: :person
-
-	def recipiants
-		send_receives.includes(:person).where(sent: 1).map(&:person)
-	end
-
-	def responders
-		send_receives.includes(:person).where(received: 1).map(&:person)
-	end
+	has_many :recieves
+	has_many :responders, through: :sends,  source: :person
 
 end

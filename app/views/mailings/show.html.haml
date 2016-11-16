@@ -1,2 +1,7 @@
 %h1="#{@mailing.type} for #{@mailing.date.strftime('%B, %Y')}"
+= button_to "Print Labels", "/mailings/#{@mailing.id}/print", method: :get, class: "ui purple button"
+
 Addresses
+.ui.list
+-@mailing.recipients.each do |peep|
+	.person[peep]=render partial: "people/person", locals: {person: peep, formal: @mailing.formal?}

@@ -1,0 +1,5 @@
+.label-container
+	-@mailing.recipients.each do |peep|
+		.label
+			.content=render partial: "people/person_print", locals: {person: peep, formal: @mailing.formal?}
+

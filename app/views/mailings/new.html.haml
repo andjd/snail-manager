@@ -14,7 +14,7 @@
 			%span Formal
 
 		=f.label "Addressees"
-		=f.collection_check_boxes :recipiants, @people, :id, :formal do |p|
+		=f.collection_check_boxes :recipient_ids, @people, :id, :formal do |p|
 			.ui.item
 				.ui.toggle.checkbox
 					=p.check_box checked: true

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
 	resources :people
 	resources :mailings
+	get 'mailings/:id/print', to: 'mailings#print'
 end

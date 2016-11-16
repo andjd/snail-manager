@@ -1,6 +1,6 @@
 .ui.item
 	.ui.purple.segment
-		%h3.ui.purple.header= person.name
+		%h3.ui.purple.header= formal ? person.formal : person.name
 		- addr = person.current_address
 		-unless addr.nil?
 			-addr.as_lines.each do |line|
