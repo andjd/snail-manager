@@ -15,7 +15,6 @@ class MailingsController < ApplicationController
 		render :print
 	end
 
-
 	def create
 		@mailing = Mailing.new mailing_params
 		if @mailing.save

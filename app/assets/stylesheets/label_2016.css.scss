@@ -1,13 +1,13 @@
 .content:before {
 	content: "";
-	background-image:  image-url("love.png") ;
+	background-image:  image-url("love.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	display: block;
 	height: 1.1in;
 	width: 1.1in;
 	margin: 0.2in;
-	margin-left:0;
+	margin-left: 0;
 }
 .content {
   display: flex;
@@ -23,7 +23,7 @@
 	font-size: .25in;
 }
 .address-line {
-	font-family: Dosis;
+	font-family: "Foglihten";
 	font-weight: light;
 	font-size: .18in;
 }
