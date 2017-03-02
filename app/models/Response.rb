@@ -1,4 +1,4 @@
-class Receive < ActiveRecord::Base
+class Response < ActiveRecord::Base
 	belongs_to :person
 
 	belongs_to :mailing

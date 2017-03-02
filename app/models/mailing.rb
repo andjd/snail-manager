@@ -14,7 +14,7 @@ class Mailing < ActiveRecord::Base
 	has_many :sends
 	has_many :recipients, through: :sends,  source: :person
 
-	has_many :recieves
-	has_many :responders, through: :sends,  source: :person
+	has_many :responses
+	has_many :responders, through: :responses,  source: :person
 
 end

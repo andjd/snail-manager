@@ -7,3 +7,9 @@
 				%p.address= line
 
 		=button_to  "Edit", edit_person_path(person), method: :get, class: "ui basic purple button "
+		-if recd_button
+			-unless mailing.responders.include? person
+				=button_to "Received Response", "#{mailing.id}/recd/#{person.id}", method: :post, class: "ui yellow button "
+			-else
+				.ui.green.label ✔ Responded
+				=button_to "Oops", "#{mailing.id}/recd/#{person.id}", method: :delete, class: "ui basic red button"

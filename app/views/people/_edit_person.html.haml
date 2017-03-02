@@ -46,7 +46,9 @@
 					.ui.field
 						=fai.label "Country"
 						=fai.text_field :country
-		=f.submit "Go ➼", class: "ui purple button" 
+		=f.submit @person.active ? "Go ➼" : "Reactivate", class: "ui purple button" 
+-if @person.active && @person.id
+	=button_to "Deactivate", person_path, {class: "ui red button", method: :delete}
 
 
 :javascript
