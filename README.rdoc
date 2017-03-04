@@ -1,28 +1,13 @@
-== README
+== Snail Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a personal project for managing mass correspondence, such as wedding invitations, holiday letters, etc.
 
-Things you may want to cover:
+Some interesting bits you might want to look at in the code:
 
-* Ruby version
+* Polymorphic associations for domestic/international addresses.
 
-* System dependencies
+* Person model, which maintains a historical record of addresses
 
-* Configuration
+* CSS for label printing app/assets/stylesheets/Avery8163.css
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You can use this code if you want to.  I'm not going to put it under any formal license, because if you are thinking that hard about using it, you should probably look for something a little more battle tested and supported ;)
