@@ -10,4 +10,4 @@ Some interesting bits you might want to look at in the code:
 
 * CSS for label printing app/assets/stylesheets/Avery8163.css
 
-© 2015-2015 Andrew DeFranco
+© 2015-2016 Andrew DeFranco
