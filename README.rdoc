@@ -10,4 +10,4 @@ Some interesting bits you might want to look at in the code:
 
 * CSS for label printing app/assets/stylesheets/Avery8163.css
 
-You can use this code if you want to.  I'm not going to put it under any formal license, because if you are thinking that hard about using it, you should probably look for something a little more battle tested and supported ;)
+© 2015-2015 Andrew DeFranco
